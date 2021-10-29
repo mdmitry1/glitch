@@ -1,0 +1,138 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A cool thing made with Glitch" />
+    <title>Welcome to Glitch!</title>
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://glitch.com/edit/favicon-app.ico"
+      type="image/x-icon"
+    />
+    <script>
+        if (location.hostname == 'tortoiseshell-silken-stranger.glitch.me' && location.protocol != 'https:') {
+           location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+        }
+    </script>
+    <!-- import the webpage's stylesheet -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: sans-serif;
+        margin: 2em 1em;
+        line-height: 1.5em;
+      }
+
+      h1 {
+        font-style: italic;
+        color: #373fff;
+        max-width: calc(100% - 5rem);
+        line-height: 1.1;
+      }
+
+      form {
+        background-color: #eee;
+        display: grid;
+        grid-gap: 1em;
+        padding: 1em;
+        max-width: 40ch;
+      }
+
+      input {
+        border: 1px solid silver;
+        display: block;
+        font-size: 16px;
+        margin-bottom: 10px;
+        padding: 5px;
+        width: 100%;
+      }
+
+      form button {
+        background-color: #bbbbf2;
+        border: 2px solid currentColor;
+        border-radius: 0.25em;
+        cursor: pointer;
+        font-size: inherit;
+        line-height: 1.4em;
+        padding: 0.25em 1em;
+        max-width: 20ch;
+      }
+
+      form button:hover {
+        background-color: lavender;
+      }
+
+      footer {
+        margin-top: 3em;
+        padding-top: 1.5em;
+        border-top: 1px solid lightgrey;
+      }
+    </style>
+    <!-- import the webpage's client-side javascript file -->
+    <header>
+      <h1>A Dream of the Future</h1>
+    </header>
+    <main>
+      <h2>Oh hi,</h2>
+      <p>Tell me your hopes and dreams:</p>
+      <form>
+        <label>
+          New Dream
+          <input
+            name="dream"
+            type="text"
+            maxlength="100"
+            required
+            placeholder="Dreams!"
+          />
+        </label>
+        <button type="submit" id="submit-dream">Add Dream</button>
+      </form>
+      <section class="dreams">
+        <ul id="dreams"></ul>
+      </section>
+    </main>
+    <footer>Made with <a href="https://glitch.com">Glitch</a>!</footer>
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:2em;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js" defer></script>
+    <script>
+      console.log("hello world :o");
+      var dreams = ["Learn Express", "Learn NodeJS", "Learn Client JavaScript"];
+      // define variables that reference elements on our page
+      const dreamsList = document.getElementById("dreams");
+      const dreamsForm = document.querySelector("form");
+
+      // a helper function that creates a list item for a given dream
+      function appendNewDream(dream) {
+        const newListItem = document.createElement("li");
+        newListItem.innerText = dream;
+        dreamsList.appendChild(newListItem);
+      }
+
+      dreams.forEach(appendNewDream);
+      dreamsForm.addEventListener("submit", event => {
+        // stop our form submission from refreshing the page
+        event.preventDefault();
+
+        // get dream value and add it to the list
+        let newDream = dreamsForm.elements.dream.value;
+        dreams.push(newDream);
+        appendNewDream(newDream);
+
+        // reset form
+        dreamsForm.reset();
+        dreamsForm.elements.dream.focus();
+      });
+    </script>
+  </head>
+</html>

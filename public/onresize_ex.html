@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A cool thing made with Glitch" />
+    <title>Resize event example</title>
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://glitch.com/edit/favicon-app.ico"
+      type="image/x-icon"
+    />
+    <script>
+        if (location.hostname == 'tortoiseshell-silken-stranger.glitch.me' && location.protocol != 'https:') {
+           location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+        }
+    </script>
+    <style>
+        h1 {
+          font-size: 20px;
+          font-weight: 300;
+          color: blue;
+          margin-bottom: 0.5em;
+        }
+        h2 {
+          font-size: 16px;
+          color: #B30000;
+          font-weight: 600;
+          margin-bottom: 0.1em;
+          margin-left: 0.5em;
+        }
+        h3 {
+          font-size: 14px;
+          color: purple;
+          font-style: italic;
+          font-weight: 300;
+          margin-bottom: 0.1em;
+          margin-top: 0.1em;
+          margin-left: 3.5em;
+        }
+        p {
+          font-size: 14px;
+          font-weight: 600;
+          color: green;
+          margin-top: 1em;
+          margin-left: 2em;
+        }
+    </style>
+  </head>
+<body onresize="myFunction()">
+
+<h1>Try to resize the browser window to display the windows height and width.</h1>
+<h2>Note: This example will not work properly in IE8 and earlier.</h2>
+<h3>IE8 and earlier do not support the outerWidth/outerHeight propery of the window object</h3>
+<div>
+    <p id="demo"></p>
+</div>
+<script>
+var w0 = window.outerWidth;
+var h0 = window.outerHeight;
+var txt0 = "Window size: width=" + w0 + ", height=" + h0;
+document.getElementById("demo").innerHTML = txt0;
+function myFunction() {
+  var w = window.outerWidth;
+  var h = window.outerHeight;
+  var txt = "Window size: width=" + w + ", height=" + h;
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+</body>
+</html>

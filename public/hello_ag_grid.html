@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Hello, AG_GRID!</title>
+    <link id="favicon" rel="icon" href="https://www.ag-grid.com/_assets/favicons/favicon-32.png" type="image/png" />
+    <script>
+        if (location.hostname == 'tortoiseshell-silken-stranger.glitch.me' && location.protocol != 'https:') {
+           location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.0.1/d3.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-balham.css">
+    <style>
+        h1 {
+            font-size: 36px;
+            font-weight: 300;
+            color: #29b94d;
+            margin-left: 1em;
+            margin-top: 1em;
+         }
+         .ag-theme-balham .ag-header-cell{
+            font-weight: 700;
+            background-color: #0acad8;
+         }
+    </style>
+</head>
+<body>
+<h1>Hello from ag-grid!</h1>
+<div id="myGrid" style="height: 500px; width:500px;" class="ag-theme-balham"></div>
+<script type="text/javascript" charset="utf-8">
+    var columnDefs = [];
+    d3.json(window.location.protocol + '//' + window.location.host + '/d3data.json').then( (data) => {
+        var lookup = {};
+        var columns = [];
+        var rowData = [];
+        data.forEach(data_item => {
+            var row = [];
+            for (let key in data_item) {
+                if (!(key in lookup)) {
+                      lookup[key] = 1;
+                      columns.push(key);
+                      var columnDef = {};
+                      columnDef.headerName = key;
+                      columnDef.field = key.toLowerCase();
+                      columnDefs.push(columnDef);
+                } 
+                var rowKey = columnDefs.find(columndef => columndef.headerName == key).field;
+                row[rowKey] = data_item[key];
+            }
+            rowData.push(row);
+        });    
+        columnDefs[columnDefs.length-1].editable=true;
+        const gridOptions = {
+            columnDefs: columnDefs,
+            rowData: rowData
+        };
+        const eGridDiv = document.querySelector('#myGrid');
+        new agGrid.Grid(eGridDiv, gridOptions);
+    });
+</script>
+</body>
+</html>

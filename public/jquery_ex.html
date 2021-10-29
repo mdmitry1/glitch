@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <!-- MIT License -->
+  <!-- https://codepen.io/hmps/pen/CbltK -->
+  <head>
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico"
+      type="image/x-icon"
+    />
+    <script>
+        if (location.hostname == 'tortoiseshell-silken-stranger.glitch.me' && location.protocol != 'https:') {
+           location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/jquery_ex.css" /link>
+  </head>
+  <body class="theme-transit">
+    <section id="content">
+      <h1>Users</h1>
+      <div class="dropdown closed">
+        <div class="title">Pick user</div>
+        <div class="dropdown-menu">
+          <ul>
+            <li>Henry Christensen</li>
+            <li>Imelda Silva</li>
+            <li>Marah Mueller</li>
+            <li>Holly Fitzpatrick</li>
+            <li>Lamar Flynn</li>
+            <li>Jameson Davidson</li>
+            <li>Harper Lynn</li>
+            <li>Keith Woods</li>
+            <li>Cally Dominguez</li>
+            <li>Carter Gould</li>
+            <li>Brenna Sutton</li>
+            <li>Robert Vang</li>
+            <li>Lane Shepard</li>
+            <li>Ila Shepard</li>
+            <li>Madaline Mccarthy</li>
+            <li>Raya King</li>
+            <li>Tara Schroeder</li>
+            <li>Paloma Bryan</li>
+            <li>Trevor Heath</li>
+            <li>Raymond Vega</li>
+            <li>Nyssa Mcleod</li>
+            <li>Zachary Deleon</li>
+            <li>Guy Morales</li>
+            <li>Gannon Kline</li>
+            <li>Clare Floyd</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <script>
+      var $container = $(".dropdown-menu"),
+        $list = $(".dropdown-menu ul"),
+        listItem = $list.find("li");
+
+      $(".dropdown .title").click(function() {
+        if ($container.height() > 0) {
+          closeMenu(this);
+        } else {
+          openMenu(this);
+        }
+      });
+
+      $(".dropdown-menu li").click(function() {
+        closeMenu(this);
+      });
+
+      function closeMenu(el) {
+        $(el)
+          .closest(".dropdown")
+          .toggleClass("closed")
+          .find(".title")
+          .text($(el).text());
+        $container.css("height", 0);
+        $list.css("top", 0);
+      }
+
+      function openMenu(el) {
+        $(el)
+          .parent()
+          .toggleClass("closed");
+
+        $container
+          .css({
+            height: 200
+          })
+          .mousemove(function(e) {
+            var heightDiff = $list.height() / $container.height(),
+              offset = $container.offset(),
+              relativeY = e.pageY - offset.top,
+              top =
+                relativeY * heightDiff > $list.height() - $container.height()
+                  ? $list.height() - $container.height()
+                  : relativeY * heightDiff;
+
+            $list.css("top", -top);
+          });
+      }
+    </script>
+  </body>
+</html>

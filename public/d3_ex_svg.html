@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <link rel="icon" href="https://cdn.glitch.com/34a5c006-eff0-41ec-b90b-89c2d7836211%2Ffavicon.ico?v=1631902446808" type="image/png"/>
+    <script>
+        if (location.hostname == 'tortoiseshell-silken-stranger.glitch.me' && location.protocol != 'https:') {
+           location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.0.1/d3.js"></script>
+  </head>
+  <body>
+    <script>
+        d3.select("body").append("div").style("border", "1px black solid").text("hello world")
+        d3.selectAll("div").style("background-color", "pink").style("font-size", "24px").attr("class", "d3div")
+        .on("click", function() {alert("You clicked a div")})
+        var svg = d3.select("body").append("svg");
+        svg.style("width","500px").style("height","500px").style("border","1px lightgray solid");
+        svg.append("text").attr("x", 30).attr("y",20).text("HELLO GLITCH");
+        svg.append("circle").attr("cx", 150).attr("cy",250).attr("r",20).attr("fill","green");
+        svg.append('line').style("stroke", "lightgreen").style("stroke-width", 10).attr("x1", 0).attr("y1", 0).attr("x2", 200).attr("y2", 200); 
+        </script>
+  </body>
+<html>

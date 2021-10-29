@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <link rel="icon" href="https://cdn.glitch.com/34a5c006-eff0-41ec-b90b-89c2d7836211%2Ffavicon.ico?v=1631902446808" type="image/png"/>
+    <script>
+        if (location.hostname == 'tortoiseshell-silken-stranger.glitch.me' && location.protocol != 'https:') {
+           location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.0.1/d3.js"></script>
+  </head>
+  <body>
+    <script>
+            d3.select("body").append("div").text("Bar Chart Example").style("color","magenta").style("font-size",32).style('font-family', 'Courier New').style('font-weight','bold');
+            var data = [210, 36, 322, 59, 123, 350, 290];
+            var width = 400, height = 300;
+            var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+            var bars = svg.selectAll(".myBars").data(data).enter().append("rect");
+            bars.attr("x", 10).attr("y", function(d,i){ return 10 + i*40}).attr("width", function(d){ return d}).attr("height", 30).attr("fill", "green");
+            var texts = svg.selectAll(".myTexts").data(data).enter().append("text");
+            texts.attr("x", function(d){ return d + 16}).attr("y", function(d,i){ return 30 + i*40}).text((d) => { return d}).style("fill","blue");
+        </script>
+  </body>
+<html>

@@ -1,0 +1,12 @@
+[push]
+	default = matching
+[user]
+        name = Dmitry Messerman
+        email = mdmitry@LAPTOP-3JNSS8KS.localdomain
+[alias]
+	cm = commit -am
+	p = push
+[diff]
+	tool = tkdiff
+[difftool]
+	prompt = false

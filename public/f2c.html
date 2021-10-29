@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>        
+        <script>
+            if (location.hostname == 'tortoiseshell-silken-stranger.glitch.me' && location.protocol != 'https:') {
+                location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" placeholder="What is the temperature..." id="numberEnter">
+        <button type="button" onclick="getInputValue();">Click to get temperature!</button>
+        <p id="result"></p>
+        <script>
+           function getInputValue(){
+            var inputNumber = document.getElementById("numberEnter").value;
+            document.getElementById("result").innerHTML = "The temperature in Celcius is " + convertTemp(inputNumber) + "!"
+           }
+        function convertTemp(f){
+            document.getElementById ("result")
+            return (5/9) * (f - 32)
+        }
+        </script>
+    </body>
+</html>
+
